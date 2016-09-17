@@ -10,7 +10,7 @@ public class UserInterface {
     public int action;
     public double amount;
     public Scanner scan = new Scanner(System.in);
-    ATM machine = new ATM();
+    ATM atm = new ATM();
 
 
     public void getLoginInfo() {

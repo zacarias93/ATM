@@ -33,20 +33,29 @@ public class User {
         return null;
     }
 
+    public ArrayList<BankAccount> getArrayListOfBankAccountsByUser() {
+        return this.arrayListOfBankAccountsByUser;
+    }
+
     public void addBankAccountToUser(BankAccount acc) {
         arrayListOfBankAccountsByUser.add(acc);
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     public void showUserBankAccounts() {
         System.out.println(arrayListOfBankAccountsByUser);
     }
 
+//*****
     public void addToArrayOfUsers() {
 
-    }
-
-    public ArrayList<BankAccount> getArrayListOfBankAccountsByUser() {
-        return this.arrayListOfBankAccountsByUser;
     }
 
     public String getUserName() {
@@ -59,13 +68,7 @@ public class User {
 
     // keep these to change name / pass??
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
 
 
 }

@@ -12,6 +12,7 @@ public class BankAccount {
     private Type accountType;
     private Status accountStatus;
     private int bankAccountNumber;
+    private String message;
 
     enum Type { CHECKING, SAVINGS, INVESTMENT;}
 
@@ -24,8 +25,8 @@ public class BankAccount {
         accountStatus = Status.OPEN;
     }
 
-    public void showAccountHistory() {
-        System.out.println(accountHistory.toString());
+    public ArrayList<String> getAccountHistory() {
+        return accountHistory;
     }
 
     public void addToAccountHistory(String str) {
@@ -48,7 +49,6 @@ public class BankAccount {
         return accountType;
     }
 
-    // changed with debit / credit - PROB WONT NEED
     public void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
     }
