@@ -9,15 +9,44 @@ public class User {
 
     private String userName;
     private String userPassword;
-    private ArrayList<BankAccount> listOfAccountsByUser;
+    public ArrayList<BankAccount> arrayListOfBankAccountsByUser;
+
+    public User () {
+        arrayListOfBankAccountsByUser = new ArrayList<BankAccount>();
+    }
 
     @Override
     public String toString() {
         return userName + userPassword;
     }
 
+    public BankAccount getBankAccountByIndex(int index) {
+        return arrayListOfBankAccountsByUser.get(index);
+    }
+
+    public BankAccount getBankAccountByType(BankAccount.Type type) {
+        for(int i=0; i<arrayListOfBankAccountsByUser.size();i++) {
+            if(type == arrayListOfBankAccountsByUser.get(i).getAccountType()) {
+                return arrayListOfBankAccountsByUser.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void addBankAccountToUser(BankAccount acc) {
+        arrayListOfBankAccountsByUser.add(acc);
+    }
+
+    public void showUserBankAccounts() {
+        System.out.println(arrayListOfBankAccountsByUser);
+    }
+
     public void addToArrayOfUsers() {
 
+    }
+
+    public ArrayList<BankAccount> getArrayListOfBankAccountsByUser() {
+        return this.arrayListOfBankAccountsByUser;
     }
 
     public String getUserName() {
@@ -37,5 +66,6 @@ public class User {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
 
 }

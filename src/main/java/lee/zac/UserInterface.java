@@ -6,13 +6,12 @@ public class UserInterface {
 
     private String userName;
     private String userPassword;
-    public type accountType;
+    private BankAccount.Type accountType;
     public int action;
     public double amount;
     public Scanner scan = new Scanner(System.in);
+    ATM machine = new ATM();
 
-
-    public enum type { CHECKING, SAVINGS, INVESTMENT }
 
     public void getLoginInfo() {
         System.out.println("Please enter your: ");
@@ -22,8 +21,6 @@ public class UserInterface {
         userPassword = scan.next();
 
     }
-
-
 
 
 

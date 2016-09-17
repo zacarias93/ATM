@@ -8,14 +8,8 @@ public class App {
     public static void main(String[] args) {
 
 
-        ATM atm = new ATM();
-        atm.createUser("zach", "soccer");
-        atm.createUser("wes","fighting");
-        atm.showUsers();
+        UserInterface operate = new UserInterface();
 
-
-        System.out.println(atm.authenticate("zach","soccer"));
-        System.out.println(atm.authenticate("wes","fighting"));
 
 
 
