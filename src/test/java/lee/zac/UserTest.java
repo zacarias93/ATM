@@ -35,10 +35,4 @@ public class UserTest {
         int actual = atm.getUserFromArrayByNameAndPass("zac","soccer").arrayListOfBankAccountsByUser.size();
         assertEquals("checking + savings = 2",expected,actual);
     }
-
-
-
-
-
-
 }

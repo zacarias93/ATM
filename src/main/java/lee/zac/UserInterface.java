@@ -6,17 +6,17 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    public String userName;
-    public String userPassword;
-    public Type userAccountType;
-    public Type userTransferToAccountType;
-    public double userAmount;
-    public String message;
+    private String userName;
+    private String userPassword;
+    private Type userAccountType;
+    private Type userTransferToAccountType;
+    private double userAmount;
+    private String message;
     public Scanner scan = new Scanner(System.in);
-    public int userFirstChoice;
-    public int userAccountChoice;
-    public int userTransferToAccountChoice;
-    public int userTransactionChoice;
+    private int userFirstChoice;
+    private int userAccountChoice;
+    private int userTransferToAccountChoice;
+    private int userTransactionChoice;
     private String newUserName;
     private String newUserPassword;
     private boolean userSession = false;
@@ -220,12 +220,4 @@ public class UserInterface {
         }
         return false;
     }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPassword(String password) {
-        this.userPassword = password;
-    }
-    }
+}

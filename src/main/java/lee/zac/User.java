@@ -6,9 +6,9 @@ public class User {
 
     private String userName;
     private String userPassword;
-    public ArrayList<BankAccount> arrayListOfBankAccountsByUser;
+    ArrayList<BankAccount> arrayListOfBankAccountsByUser;
 
-    public User () {
+    User() {
         arrayListOfBankAccountsByUser = new ArrayList<BankAccount>();
     }
 
@@ -17,11 +17,11 @@ public class User {
         return userName + userPassword;
     }
 
-    public BankAccount getBankAccountByIndex(int index) {
+    BankAccount getBankAccountByIndex(int index) {
         return arrayListOfBankAccountsByUser.get(index);
     }
 
-    public BankAccount getBankAccountByType(BankAccount.Type type) {
+    BankAccount getBankAccountByType(BankAccount.Type type) {
         for(int i=0; i<arrayListOfBankAccountsByUser.size();i++) {
             if(type == arrayListOfBankAccountsByUser.get(i).getAccountType()) {
                 return arrayListOfBankAccountsByUser.get(i);
@@ -30,34 +30,32 @@ public class User {
         return null;
     }
 
-    public ArrayList<BankAccount> getArrayListOfBankAccountsByUser() {
+    ArrayList<BankAccount> getArrayListOfBankAccountsByUser() {
         return this.arrayListOfBankAccountsByUser;
     }
 
-    public void addBankAccountToUser(BankAccount acc) {
+    void addBankAccountToUser(BankAccount acc) {
         arrayListOfBankAccountsByUser.add(acc);
     }
 
-    public void setUserName(String userName) {
+    void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public void setUserPassword(String userPassword) {
+    void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
 
-    public void showUserBankAccounts() {
-        System.out.println(arrayListOfBankAccountsByUser);
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    // keep these to change name / pass??
+//    public void showUserBankAccounts() {
+//        System.out.println(arrayListOfBankAccountsByUser);
+//    }
+//
+//    public String getUserName() {
+//        return userName;
+//    }
+//
+//    public String getUserPassword() {
+//        return userPassword;
+//    }
 
 }

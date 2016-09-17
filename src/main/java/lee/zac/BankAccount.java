@@ -14,52 +14,50 @@ public class BankAccount {
     private int bankAccountNumber;
     private String message;
 
-    enum Type { CHECKING, SAVINGS, INVESTMENT;
-
-    }
+    enum Type { CHECKING, SAVINGS, INVESTMENT }
 
     enum Status { OPEN, CLOSED; }
 
-    public BankAccount(int bankAccountNumber) {
+    BankAccount(int bankAccountNumber) {
         this.bankAccountNumber = bankAccountNumber;
         accountHistory = new ArrayList<String>();
         accountBalance=0;
         accountStatus = Status.OPEN;
     }
 
-    public ArrayList<String> getAccountHistory() {
+    ArrayList<String> getAccountHistory() {
         return accountHistory;
     }
 
-    public void addToAccountHistory(String str) {
+    void addToAccountHistory(String str) {
         accountHistory.add(str);
     }
 
-    public void setAccountStatus(Status accountStatus) {
+    void setAccountStatus(Status accountStatus) {
         this.accountStatus = accountStatus;
     }
 
-    public Status getAccountStatus() {
+    Status getAccountStatus() {
         return accountStatus;
     }
 
-    public void setAccountType(Type type) {
+    void setAccountType(Type type) {
          accountType = type;
     }
 
-    public Type getAccountType() {
+    Type getAccountType() {
         return accountType;
     }
 
-    public void setAccountBalance(double accountBalance) {
+    void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
     }
 
-    public double getAccountBalance() {
+    double getAccountBalance() {
         return accountBalance;
     }
 
-    public int getBankAccountNumber() {
+    int getBankAccountNumber() {
         return bankAccountNumber;
     }
 }

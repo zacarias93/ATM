@@ -7,6 +7,5 @@ public class App {
 
         UserInterface operate = new UserInterface();
         operate.useATM();
-
     }
 }

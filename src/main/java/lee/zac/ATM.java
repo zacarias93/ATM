@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ATM {
 
-    protected ArrayList<User> arrayListOfUsers;
+    ArrayList<User> arrayListOfUsers;
     private String userName;
     private String userPassword;
     private double newAccountBalance;
@@ -17,13 +17,11 @@ public class ATM {
     private double newTransTobalance;
     private int bankAccountNumber=0;
     private String message;
-    public boolean powerOn = false;
-
+    boolean powerOn = false;
 
     public ATM() {
         arrayListOfUsers = new ArrayList<User>();
     }
-
 
     protected ArrayList<User> getArrayListOfUsers() {
         return arrayListOfUsers;
