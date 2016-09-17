@@ -23,7 +23,7 @@ public class UserInterface {
 
     ATM atm = new ATM();
 
-    public void useATM() {
+    public void useATM() { // load default to test
         atm.createUserAndAddToUserArray("1","1");
         atm.createBankAccountAndAddToUserProfile("1","1", Type.CHECKING);
         atm.createBankAccountAndAddToUserProfile("1","1", Type.SAVINGS);
@@ -31,8 +31,6 @@ public class UserInterface {
         atm.deposit("1","1", Type.CHECKING,100);
         atm.deposit("1","1", Type.SAVINGS,500);
         atm.deposit("1","1", Type.INVESTMENT,1000);
-
-
         atm.powerOn = true;
 
         while(atm.powerOn) {
@@ -83,27 +81,26 @@ public class UserInterface {
                                 break;
 
                             case 7:
-                                userSession = false;
+                                createBankAccount();
                                 break;
 
+                            case 8:
+                                userSession = false;
+                                break;
                         }
                     }
                 }
                 else {
-                    // login was wrong
                     System.out.println("Your account name and password did not match our records. Please try again!");
                 }
             }
 
             else if(userFirstChoice == 2) {
                 System.out.println(createNewUser());
-                createBankAccount();
             }
-            else if(userFirstChoice == 3) {
-                createBankAccount();
 
-            }
-            else { // Anything but 1,2,3 - turns OFF
+
+            else if(userFirstChoice == 99) { // 99 - Secret command to turn off
                 System.out.println("Goodbye.");
                 atm.powerOn=false;
             }
@@ -112,14 +109,14 @@ public class UserInterface {
     }
 
     public int homeScreen() {
-        message = "\nHello! \nWhat would you like to do? \nPlease select a number: \n  1: Login   \n  2: Create User  \n  3: Create Account";
+        message = "\nHello! \nWhat would you like to do? \nPlease select a number: \n  1: Login   \n  2: Create User ";
         System.out.println(message);
         userFirstChoice = scan.nextInt();
         return userFirstChoice;
     }
 
     public int menuOptionsScreen() {
-        System.out.println("\nWhat would you like to do? \n 1: Withdraw \n 2: Deposit \n 3: Transfer \n 4: Check Balance \n 5: Print Transaction History \n 6: Close Account \n 7: Log out");
+        System.out.println("\nWhat would you like to do? \n 1: Withdraw \n 2: Deposit \n 3: Transfer \n 4: Check Balance \n 5: Print Transaction History \n 6: Close Account \n 7: Create Account \n 8: Log out");
         return userTransactionChoice = scan.nextInt();
     }
 
@@ -128,7 +125,20 @@ public class UserInterface {
         newUserName = scan.next();
         System.out.println("Please enter a password.");
         newUserPassword = scan.next();
-        return atm.createUserAndAddToUserArray(newUserName, newUserPassword);
+        if(userNameAndPassWordAlreadyTaken() == false){
+            return atm.createUserAndAddToUserArray(newUserName, newUserPassword);
+        }
+        return message = "This account is already taken. Please choose another name!";
+        }
+
+    public boolean userNameAndPassWordAlreadyTaken() {
+        for(int i =0; i<atm.arrayListOfUsers.size(); i++) {
+            if(atm.arrayListOfUsers.get(i).toString().equals(newUserName + newUserPassword + "")) {
+                System.out.println("This account already exist!");
+                return true;
+            }
+        }
+        return false;
     }
 
     public void createBankAccount() {

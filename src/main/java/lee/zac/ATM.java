@@ -2,9 +2,6 @@ package lee.zac;
 
 import java.util.ArrayList;
 
-/**
- * Created by zaclee on 9/16/16.
- */
 public class ATM {
 
     protected ArrayList<User> arrayListOfUsers;

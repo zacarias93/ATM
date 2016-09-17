@@ -2,9 +2,6 @@ package lee.zac;
 
 import java.util.ArrayList;
 
-/**
- * Created by zaclee on 9/16/16.
- */
 public class User {
 
     private String userName;
