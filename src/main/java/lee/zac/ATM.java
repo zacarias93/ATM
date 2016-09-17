@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class ATM {
 
-    private static ArrayList<User> arrayListOfUsers;
+    protected ArrayList<User> arrayListOfUsers;
     private String userName;
     private String userPassword;
     private double newAccountBalance;
@@ -20,6 +20,7 @@ public class ATM {
     private double newTransTobalance;
     private int bankAccountNumber=0;
     private String message;
+    public boolean powerOn = false;
 
 
     public ATM() {
@@ -40,12 +41,12 @@ public class ATM {
         System.out.println(arrayListOfUsers.toString());
     }
 
-    protected String createUser(String name, String pass) {
+    protected String createUserAndAddToUserArray(String name, String pass) {
         User temp = new User();
         temp.setUserName(name);
         temp.setUserPassword(pass);
         arrayListOfUsers.add(temp);
-        return message = "You just created a User! Your userID is: " + name;
+        return message = "You just created a User! Your userID is: " + name + ". Your password is: " +pass+ ".";
     }
 
     protected User getUserFromArrayByNameAndPass(String userName, String userPassword) {
@@ -100,7 +101,7 @@ public class ATM {
         if(userSelectedBankAccount.getAccountStatus() == BankAccount.Status.OPEN) {
             newAccountBalance = userSelectedBankAccount.getAccountBalance() + amount;
             userSelectedBankAccount.setAccountBalance(newAccountBalance);
-            message = "You deposited " + amount + " to your " + type + " account.";
+            message = "\nYou deposited " + amount + " to your " + type + " account. \nYour new balance is: " + newAccountBalance;
             userSelectedBankAccount.addToAccountHistory(message);
             return message;
         }
@@ -115,7 +116,7 @@ public class ATM {
         else if(userSelectedBankAccount.getAccountStatus() == BankAccount.Status.OPEN && userSelectedBankAccount.getAccountBalance() - amount >= 0) {
             newAccountBalance = userSelectedBankAccount.getAccountBalance() - amount;
             userSelectedBankAccount.setAccountBalance(newAccountBalance);
-            message = "You withdrew " + amount + " from your " + type + " account.";
+            message = "\nYou withdrew " + amount + " from your " + type + " account. \nYour new balance is: " + newAccountBalance;
             userSelectedBankAccount.addToAccountHistory(message);
             return message;
         }
@@ -131,7 +132,7 @@ public class ATM {
                 userSelectedAccountToTransferFrom.setAccountBalance(newTransFromBalance);
                 newTransTobalance = userSelectedAccountToTransferTo.getAccountBalance() + amount;
                 userSelectedAccountToTransferTo.setAccountBalance(newTransTobalance);
-                message = "Transfer was successful. Your new account balance is: \n" + userSelectedAccountToTransferFrom.getAccountType() + " : " +
+                message = "\nTransfer was successful. Your new account balance is: \n" + userSelectedAccountToTransferFrom.getAccountType() + " : " +
                         userSelectedAccountToTransferFrom.getAccountBalance() + "\n" + userSelectedAccountToTransferTo.getAccountType() + " : " + userSelectedAccountToTransferTo.getAccountBalance();
                 userSelectedAccountToTransferTo.addToAccountHistory(message);
                 userSelectedAccountToTransferFrom.addToAccountHistory(message);

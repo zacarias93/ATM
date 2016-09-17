@@ -17,7 +17,7 @@ public class ATMTest {
 
     @Test
     public void createUserTest() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         int expected = 1;
         int actual = atm.getArrayListOfUsers().size();
         assertEquals("Should be 1",expected,actual);
@@ -25,7 +25,7 @@ public class ATMTest {
 
     @Test
     public void authenticateTest() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         boolean expected = true;
         boolean actual = atm.authenticate("zac","soccer");
         assertEquals(expected,actual);
@@ -33,8 +33,8 @@ public class ATMTest {
 
     @Test
     public void getUserFromArrayByNameAndPassTest() {
-        atm.createUser("zac","soccer");
-        atm.createUser("wes","fighting");
+        atm.createUserAndAddToUserArray("zac","soccer");
+        atm.createUserAndAddToUserArray("wes","fighting");
         User expected = atm.getUserFromArrayListByIndex(1);
         User actual = atm.getUserFromArrayByNameAndPass("wes","fighting");
         assertEquals("Check second element w/ searching by name and pass",expected,actual);
@@ -42,8 +42,8 @@ public class ATMTest {
 
     @Test
     public void createBankAccountAndAddToUserProfileTest() {// I know it's a long name get over it!
-        atm.createUser("zac","soccer");
-        atm.createUser("wes","fighting");
+        atm.createUserAndAddToUserArray("zac","soccer");
+        atm.createUserAndAddToUserArray("wes","fighting");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
         int expected = 2;
@@ -53,7 +53,7 @@ public class ATMTest {
 
     @Test
     public void closeBankAccountTest() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
         atm.closeBankAccount("zac","soccer", BankAccount.Type.CHECKING);
@@ -64,7 +64,7 @@ public class ATMTest {
 
     @Test
     public void getBankAccountNumberTest() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
         int expected = 1;
@@ -74,7 +74,7 @@ public class ATMTest {
 
     @Test
     public void getBankAccountNumberTest2() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
         int expected = 2;
@@ -84,7 +84,7 @@ public class ATMTest {
 
     @Test
     public void showAccountBalanceTest() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         String expected = "Your account balance is: 50.0";
@@ -94,7 +94,7 @@ public class ATMTest {
 
     @Test
     public void depositTest() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         double expected = 50;
@@ -104,17 +104,17 @@ public class ATMTest {
 
     @Test
     public void depositTest2() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
-        String expected = "You deposited 50.0 to your CHECKING account.";
+        String expected = "\nYou deposited 50.0 to your CHECKING account. \nYour new balance is: 100.0" ;
         String actual = atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         assertEquals("Test to deposit 50",expected,actual);
     }
 
     @Test
     public void depositTest3() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         atm.getUserFromArrayByNameAndPass("zac","soccer").getBankAccountByType(BankAccount.Type.CHECKING).setAccountStatus(BankAccount.Status.CLOSED);
@@ -125,17 +125,17 @@ public class ATMTest {
 
     @Test
     public void withdrawTest1() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
-        String expected = "You withdrew 50.0 from your CHECKING account.";
+        String expected = "\nYou withdrew 50.0 from your CHECKING account. \nYour new balance is: " + 0.0;
         String actual = atm.withdraw("zac","soccer", BankAccount.Type.CHECKING,50);
         assertEquals("Withdraw 50 from account with 50 - should approve.",expected,actual);
     }
 
     @Test
     public void withdrawTest2() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         String expected = "You do not have sufficient funds for this transaction.";
@@ -145,7 +145,7 @@ public class ATMTest {
 
     @Test
     public void withdrawTest3() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.getUserFromArrayByNameAndPass("zac","soccer").getBankAccountByType(BankAccount.Type.CHECKING).setAccountStatus(BankAccount.Status.CLOSED);
         String expected = "Transaction denied. Account is not open.";
@@ -155,19 +155,19 @@ public class ATMTest {
 
     @Test
     public void transferTest1() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
         atm.deposit("zac","soccer", BankAccount.Type.SAVINGS,50);
-        String expected = "Transfer was successful. Your new account balance is: \n" + "CHECKING : 0.0\n" + "SAVINGS : 100.0";
+        String expected = "\nTransfer was successful. Your new account balance is: \n" + "CHECKING : 0.0\n" + "SAVINGS : 100.0";
         String actual = atm.transfer("zac","soccer", BankAccount.Type.CHECKING, BankAccount.Type.SAVINGS,50);
         assertEquals("transfer 50 from CH TO SAV",expected,actual);
     }
 
     @Test
     public void transferTest2() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
@@ -179,7 +179,7 @@ public class ATMTest {
 
     @Test
     public void transferTest3() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
@@ -192,7 +192,7 @@ public class ATMTest {
 
     @Test
     public void transferTest4() {
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
@@ -205,16 +205,14 @@ public class ATMTest {
 
     @Test
     public void showTransactionHistory() { // I have tested transfer but with line breaks didn't include in here.
-        atm.createUser("zac","soccer");
+        atm.createUserAndAddToUserArray("zac","soccer");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
         atm.withdraw("zac","soccer", BankAccount.Type.CHECKING,50);
         atm.closeBankAccount("zac","soccer", BankAccount.Type.CHECKING);
-        String expected = "[Your CHECKING account has been created and added to your user profile., You deposited 50.0 to your CHECKING account., You withdrew 50.0 from your CHECKING account., Your account is closed.]";
+        String expected = "[Your CHECKING account has been created and added to your user profile., \nYou deposited 50.0 to your CHECKING account. \nYour new balance is: 50.0, \nYou withdrew 50.0 from your CHECKING account. \nYour new balance is: 0.0, Your account is closed.]";
         String actual = atm.showTransactionHistory("zac","soccer", BankAccount.Type.CHECKING);
         assertEquals("create / deposit / withdraw / close message",expected,actual);
-
-
 
     }
 

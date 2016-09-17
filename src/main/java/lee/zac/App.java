@@ -9,13 +9,7 @@ public class App {
 
 
         UserInterface operate = new UserInterface();
-        operate.atm.createUser("zac","soccer");
-        operate.atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
-        operate.atm.deposit("zac","soccer", BankAccount.Type.CHECKING,50);
-
-
-
-
+        operate.useATM();
 
     }
 }

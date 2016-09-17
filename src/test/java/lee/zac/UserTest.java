@@ -16,8 +16,8 @@ public class UserTest {
 
     @Test
     public void getBankAccountByTypeTest() {
-        atm.createUser("zac","soccer");
-        atm.createUser("wes","fighting");
+        atm.createUserAndAddToUserArray("zac","soccer");
+        atm.createUserAndAddToUserArray("wes","fighting");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
         BankAccount expected = atm.getUserFromArrayListByIndex(0).getBankAccountByIndex(0);
@@ -27,28 +27,14 @@ public class UserTest {
 
     @Test
     public void addBankAccountToUserTest() {
-        atm.createUser("zac","soccer");
-        atm.createUser("wes","fighting");
+        atm.createUserAndAddToUserArray("zac","soccer");
+        atm.createUserAndAddToUserArray("wes","fighting");
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.CHECKING);
         atm.createBankAccountAndAddToUserProfile("zac","soccer", BankAccount.Type.SAVINGS);
         int expected = 2;
         int actual = atm.getUserFromArrayByNameAndPass("zac","soccer").arrayListOfBankAccountsByUser.size();
         assertEquals("checking + savings = 2",expected,actual);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

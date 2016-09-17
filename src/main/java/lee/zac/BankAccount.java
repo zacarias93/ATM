@@ -14,7 +14,9 @@ public class BankAccount {
     private int bankAccountNumber;
     private String message;
 
-    enum Type { CHECKING, SAVINGS, INVESTMENT;}
+    enum Type { CHECKING, SAVINGS, INVESTMENT;
+
+    }
 
     enum Status { OPEN, CLOSED; }
 

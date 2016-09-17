@@ -53,11 +53,6 @@ public class User {
         System.out.println(arrayListOfBankAccountsByUser);
     }
 
-//*****
-    public void addToArrayOfUsers() {
-
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -67,8 +62,5 @@ public class User {
     }
 
     // keep these to change name / pass??
-
-
-
 
 }
