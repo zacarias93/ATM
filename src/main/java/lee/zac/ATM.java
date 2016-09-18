@@ -5,11 +5,7 @@ import java.util.ArrayList;
 public class ATM {
 
     ArrayList<User> arrayListOfUsers;
-    private String userName;
-    private String userPassword;
     private double newAccountBalance;
-    private BankAccount transferFrom;
-    private BankAccount transferTo;
     private BankAccount userSelectedBankAccount;
     private BankAccount userSelectedAccountToTransferFrom;
     private BankAccount userSelectedAccountToTransferTo;
@@ -29,11 +25,6 @@ public class ATM {
 
     protected User getUserFromArrayListByIndex (int i) {
         return arrayListOfUsers.get(i);
-    }
-
-    //for me to test - delete when turning in - NO ONE should be able to print out list of users + pass
-    public void showUsers() {
-        System.out.println(arrayListOfUsers.toString());
     }
 
     protected String createUserAndAddToUserArray(String name, String pass) {
@@ -144,6 +135,4 @@ public class ATM {
         userSelectedBankAccount = getUserFromArrayByNameAndPass(userName,userPassword).getBankAccountByType(type);
         return message = userSelectedBankAccount.getAccountHistory().toString();
     }
-
-
 }
