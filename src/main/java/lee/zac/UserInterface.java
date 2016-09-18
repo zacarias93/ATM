@@ -97,6 +97,7 @@ public class UserInterface {
 
             else if(userFirstChoice == 2) {
                 System.out.println(createNewUser());
+                createBankAccount();
             }
 
             else if(userFirstChoice == 99) { // 99 - Secret command to turn off
