@@ -12,11 +12,9 @@ public class BankAccount {
     private Type accountType;
     private Status accountStatus;
     private int bankAccountNumber;
-    private String message;
 
     enum Type { CHECKING, SAVINGS, INVESTMENT }
-
-    enum Status { OPEN, CLOSED; }
+    enum Status { OPEN, CLOSED }
 
     BankAccount(int bankAccountNumber) {
         this.bankAccountNumber = bankAccountNumber;
