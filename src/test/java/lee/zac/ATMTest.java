@@ -215,5 +215,4 @@ public class ATMTest {
         assertEquals("create / deposit / withdraw / close message",expected,actual);
 
     }
-
 }

@@ -99,7 +99,6 @@ public class UserInterface {
                 System.out.println(createNewUser());
             }
 
-
             else if(userFirstChoice == 99) { // 99 - Secret command to turn off
                 System.out.println("Goodbye.");
                 atm.powerOn=false;
