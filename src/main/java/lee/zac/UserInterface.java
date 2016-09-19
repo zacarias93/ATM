@@ -193,6 +193,7 @@ public class UserInterface {
                 break;
             case 3:
                 userTransferToAccountType = atm.getUserFromArrayByNameAndPass(userName, userPassword).getBankAccountByType(Type.INVESTMENT).getAccountType();
+                break;
 
             default: selectAccount();
         }
